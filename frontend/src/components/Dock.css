@@ -1,0 +1,151 @@
+/* ==========================================================================
+   FinHub 2.0 - macOS Style Dock Navigation (React Bits inspired)
+   ========================================================================== */
+
+.dock-wrapper {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1000;
+  pointer-events: none; /* Permite clicks fuera del dock */
+}
+
+.dock-panel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.85rem;
+  background: rgba(18, 24, 38, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 20px 40px -15px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(56, 189, 248, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  pointer-events: auto;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dock-panel:hover {
+  background: rgba(18, 24, 38, 0.82);
+  border-color: rgba(56, 189, 248, 0.25);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.7),
+    0 0 35px rgba(56, 189, 248, 0.18),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.dock-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  border-radius: 50%;
+  color: #94a3b8;
+  transition: width 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s ease,
+              color 0.2s ease;
+}
+
+.dock-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dock-item:hover {
+  color: #f8fafc;
+}
+
+.dock-item:active .dock-icon-wrapper {
+  transform: scale(0.9);
+}
+
+.dock-item.active {
+  color: #38bdf8;
+}
+
+/* Indicador de ítem activo (dot tipo macOS) */
+.dock-active-dot {
+  position: absolute;
+  bottom: -4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* Tooltip animado que flota encima de cada icono */
+.dock-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  padding: 0.35rem 0.65rem;
+  background: rgba(15, 23, 42, 0.92);
+  color: #f1f5f9;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px) scale(0.95);
+  transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+}
+
+.dock-item:hover .dock-tooltip {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Flechita inferior del tooltip */
+.dock-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px;
+  border-style: solid;
+  border-color: rgba(15, 23, 42, 0.92) transparent transparent transparent;
+}
+
+/* Responsive: en pantallas pequeñas ajustamos márgenes */
+@media (max-width: 768px) {
+  .dock-wrapper {
+    bottom: 0.8rem;
+  }
+  .dock-panel {
+    gap: 0.25rem;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    max-width: 95vw;
+  }
+}

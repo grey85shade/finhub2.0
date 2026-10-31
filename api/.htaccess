@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Con PHP-FPM/CGI (p. ej. Synology Web Station) Apache no pasa la cabecera Authorization a PHP
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# El código, la configuración y las migraciones no se sirven nunca directamente
+RewriteRule ^(src|config|database)(/|$) - [F,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]

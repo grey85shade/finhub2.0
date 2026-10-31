@@ -1,0 +1,20 @@
+# Configuración de cada instalación (la genera el asistente)
+api/config/config.local.php
+api/config/*.tmp
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# Paquete de la release (npm run release)
+release/
+
+# Herramientas locales
+.claude/
+.vscode/
+.idea/
+*.log
+.DS_Store
+Thumbs.db

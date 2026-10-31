@@ -1,0 +1,525 @@
+/* ==========================================================================
+   FinHub 2.0 - Inversiones (reutiliza las piezas de DashboardHome.css)
+   ========================================================================== */
+
+.inv { --contributed: #94a3b8; }
+
+.inv-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.inv-title {
+  color: var(--text-main);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.inv-update-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inv-grid { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+
+@media (max-width: 900px) {
+  .inv-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- Gráfico valor / aportado ---------- */
+
+.inv-legend {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.inv-legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
+
+.inv-legend-line {
+  display: inline-block;
+  width: 18px;
+  height: 0;
+  border-top: 2px solid var(--chart-line);
+}
+
+.inv-legend-line.is-contributed { border-top: 2px dashed var(--contributed); }
+
+.inv-chart-contributed {
+  fill: none;
+  stroke: var(--contributed);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+}
+
+.inv-chart-marker-contributed {
+  fill: var(--contributed);
+  stroke: #101622;
+  stroke-width: 2;
+}
+
+/* ---------- Tablas ---------- */
+
+.inv-table-wrap {
+  overflow-x: auto;
+  margin: 0 -0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.inv-annual th,
+.inv-annual td { padding-left: 0.4rem; padding-right: 0.4rem; }
+
+.inv-th-dot { display: inline-block; width: 10px; height: 10px; }
+
+.inv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.inv-table th {
+  color: var(--text-dim);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--border-subtle);
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inv-table td {
+  color: var(--text-main);
+  text-align: right;
+  white-space: nowrap;
+  padding: 0.6rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.inv-table th:first-child,
+.inv-table td:first-child { text-align: left; }
+
+.inv-table tbody tr:last-child td { border-bottom: none; }
+
+.inv-table td small {
+  display: block;
+  font-size: 0.72rem;
+  opacity: 0.85;
+}
+
+.inv-table tr.is-clickable { cursor: pointer; transition: background 0.15s ease; }
+.inv-table tr.is-clickable:hover { background: rgba(255, 255, 255, 0.03); }
+
+.inv-strong { font-weight: 600; }
+
+.inv-ytd {
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
+  background: rgba(96, 165, 250, 0.15);
+  color: #93c5fd;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+.inv-account-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 220px;
+}
+
+.inv-color-bar {
+  width: 3px;
+  height: 30px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.inv-stale { color: #fbbf24 !important; }
+
+/* ---------- Distribución ---------- */
+
+.inv-alloc {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem 1.5rem;
+}
+
+.inv-alloc svg { flex-shrink: 0; overflow: visible; }
+.inv-alloc svg circle { transition: stroke-width 0.15s ease, opacity 0.15s ease; cursor: pointer; }
+.inv-alloc svg circle.is-dimmed { opacity: 0.35; }
+
+.inv-donut-track { fill: none; stroke: rgba(255, 255, 255, 0.05); stroke-width: 22; }
+.inv-donut-label { fill: var(--text-dim); font-size: 11px; }
+.inv-donut-value { fill: var(--text-main); font-size: 17px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.inv-alloc-list { flex: 1 1 240px; min-width: 0; }
+.inv-alloc-row { grid-template-columns: minmax(0, 1fr) auto 3.6rem; }
+
+/* ---------- Movimientos ---------- */
+
+.inv-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.inv-segment {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+}
+
+.inv-segment button {
+  padding: 0.35rem 0.7rem;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.inv-segment button.active { background: rgba(96, 165, 250, 0.18); color: #bfdbfe; }
+
+.inv-select { width: auto; padding: 0.4rem 2rem 0.4rem 0.75rem; font-size: 0.8rem; }
+
+.inv-movements {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.inv-movement {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.6rem 0.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.inv-movement:last-child { border-bottom: none; }
+
+.inv-movement-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.inv-movement-text .home-account-bank { display: flex; align-items: center; gap: 0.35rem; }
+
+.inv-movement-concept {
+  color: var(--text-main);
+  font-size: 0.88rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inv-movement-date { color: var(--text-dim); font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+
+.inv-movement-amount {
+  min-width: 7rem;
+  text-align: right;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.inv-more { align-self: center; margin-left: 0; }
+
+/* ---------- Modal de valoraciones ---------- */
+
+.inv-bulk-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  overflow-y: auto;
+}
+
+.inv-bulk-form .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.inv-bulk-form label { color: var(--text-muted); font-size: 0.82rem; font-weight: 500; }
+
+.inv-bulk-list { list-style: none; display: flex; flex-direction: column; }
+
+.inv-bulk-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.inv-bulk-diff {
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.inv-bulk-input { width: 9.5rem; flex-shrink: 0; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 640px) {
+  .inv-filters,
+  .inv-select { width: 100%; }
+  .inv-segment { max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+  .inv-segment button { flex-shrink: 0; }
+  .inv-movement-date { display: none; }
+  .inv-movement-amount { min-width: 0; }
+  .inv-update-btn { width: 100%; justify-content: center; }
+  .inv-bulk-row { flex-wrap: wrap; }
+  .inv-bulk-input { width: 100%; }
+}
+
+/* ---------- Precios automáticos y fondos ---------- */
+
+.inv-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.inv-sync {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.inv-sync:hover:not(:disabled) { color: var(--text-main); border-color: rgba(96, 165, 250, 0.4); }
+.inv-sync:disabled { cursor: progress; }
+.inv-sync-error { color: #fbbf24; }
+
+.is-spinning { animation: inv-spin 1s linear infinite; }
+@keyframes inv-spin { to { transform: rotate(360deg); } }
+
+.inv-funds-btn {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.3rem;
+  margin-top: 0.2rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #60a5fa;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.inv-funds-btn:hover { color: #bfdbfe; text-decoration: underline; }
+
+.inv-table tr.has-funds td { border-bottom-color: transparent; }
+.inv-fund-row td { padding-top: 0.35rem; padding-bottom: 0.35rem; font-size: 0.8rem; }
+.inv-fund-row .home-account-name { font-size: 0.8rem; font-weight: 400; color: var(--text-muted); }
+.inv-fund-row td.inv-dim { white-space: normal; }
+.inv-fund-cell { display: flex; padding-left: 3.1rem; max-width: 300px; }
+.inv-fund-cell .home-account-name { white-space: normal; }
+.inv-dim { color: var(--text-dim) !important; }
+.inv-inline-icon { vertical-align: -2px; margin-right: 0.3rem; }
+
+/* ---------- Modal de fondos ---------- */
+
+.inv-funds-modal { max-width: 720px; }
+
+.inv-funds-modal .btn-modal-primary:disabled,
+.inv-funds-modal .btn-modal-secondary:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+
+.inv-notice {
+  padding: 0.7rem 1.25rem;
+  background: rgba(16, 185, 129, 0.12);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.25);
+  color: #6ee7b7;
+  font-size: 0.85rem;
+}
+
+.inv-funds-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.inv-fund {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.inv-fund-new { border-style: dashed; }
+
+.inv-fund-head { display: flex; align-items: flex-start; gap: 0.75rem; }
+.inv-fund-head .home-account-name { white-space: normal; }
+
+.inv-icon-btn {
+  display: flex;
+  padding: 0.35rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+.inv-icon-btn:hover { color: #fb7185; background: rgba(244, 63, 94, 0.1); }
+
+.inv-fund-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.6rem 1rem;
+  margin: 0;
+}
+
+.inv-fund-stats dt { color: var(--text-dim); font-size: 0.72rem; margin-bottom: 0.1rem; }
+.inv-fund-stats dd { margin: 0; color: var(--text-main); font-size: 0.88rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.inv-fund-stats dd small { display: block; color: var(--text-dim); font-size: 0.7rem; font-weight: 400; }
+
+.inv-fund-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+  align-items: end;
+}
+
+.inv-fund-form label,
+.inv-sim-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.inv-fund-form .modal-input,
+.inv-sim-form .modal-input { padding: 0.55rem 0.75rem; font-variant-numeric: tabular-nums; min-width: 0; }
+
+/* Sin esto, el ancho intrínseco de los input de fecha ensancha el modal en móvil */
+.inv-fund-form > *,
+.inv-fund-stats > *,
+.inv-sim-form > * { min-width: 0; }
+
+@media (max-width: 480px) {
+  .inv-fund-form,
+  .inv-fund-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .inv-funds-body { padding: 1rem; }
+}
+
+.inv-fund-add { display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; align-self: flex-start; }
+
+.inv-warning { color: #fbbf24; font-size: 0.8rem; }
+
+.inv-alert-warning {
+  background: rgba(251, 191, 36, 0.1);
+  border-color: rgba(251, 191, 36, 0.3);
+  color: #fcd34d;
+}
+
+.inv-fund-check {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 1px solid;
+  font-size: 0.8rem;
+}
+
+.inv-fund-check.is-ok { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.25); }
+.inv-fund-check.is-off { background: rgba(251, 191, 36, 0.08); border-color: rgba(251, 191, 36, 0.3); }
+.inv-fund-check > div { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.inv-fund-check span { color: var(--text-muted); }
+.inv-fund-check strong { color: #f1f5f9; font-size: 1rem; font-variant-numeric: tabular-nums; }
+.inv-fund-check p { grid-column: 1 / -1; margin: 0; line-height: 1.45; }
+.inv-fund-check.is-ok p { color: #6ee7b7; }
+.inv-fund-check.is-off p { color: #fcd34d; }
+
+.inv-funds-help {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.inv-funds-help dt { color: #e2e8f0; font-weight: 600; }
+.inv-funds-help dd { margin: 0; color: var(--text-muted); }
+
+/* ---------- Simulador ---------- */
+
+.inv-sim {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(0, 3fr);
+  gap: 1.5rem;
+}
+
+.inv-sim-form { display: flex; flex-direction: column; gap: 0.75rem; }
+.inv-sim-result { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+
+.inv-sim-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem 1.25rem;
+  margin: 0;
+}
+
+.inv-sim-stats dt { color: var(--text-dim); font-size: 0.72rem; margin-bottom: 0.15rem; }
+.inv-sim-stats dd { margin: 0; color: var(--text-main); font-size: 1rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.inv-sim-stats .is-main dd { font-size: 1.35rem; font-weight: 700; color: #93c5fd; }
+
+.inv-sim-hint { margin-top: 0; }
+
+@media (max-width: 760px) {
+  .inv-sim { grid-template-columns: minmax(0, 1fr); }
+  .inv-sim-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .inv-sim-hint { grid-column: 1 / -1; }
+}
