@@ -14,8 +14,9 @@ balances, proyecciones, gastos previstos e inversiones en fondos indexados.
 
 ## Instalación
 
-1. Copia el contenido de la release (o el resultado de `npm run release`, ver más abajo) en una carpeta del servidor
-   web, por ejemplo `/finhub`. Debe quedar así:
+1. Descarga `finhub-vX.Y.Z.zip` de la página de [Releases](../../releases/latest), descomprímelo y copia la carpeta
+   `finhub` en el servidor web (puedes renombrarla). No descargues el código fuente del repositorio: no incluye el
+   frontend compilado. Debe quedar así:
 
    ```
    finhub/
@@ -63,6 +64,12 @@ como `frontend/.env` y ajusta `DEV_API_TARGET`. La primera vez, el navegador mos
 - `npm run lint`: análisis estático del frontend.
 - `npm run release`: compila el frontend y genera `release/finhub/` (frontend + API, sin tu configuración), lista
   para copiar al servidor.
+
+### Publicar una versión
+
+1. Sube la versión en `frontend/package.json` y en `InstallController::VERSION` (deben coincidir).
+2. Crea y sube la etiqueta: `git tag v1.0.0` y `git push origin v1.0.0`.
+3. GitHub Actions (`.github/workflows/release.yml`) compila, empaqueta y crea la release con el zip adjunto.
 
 ### Estructura
 
